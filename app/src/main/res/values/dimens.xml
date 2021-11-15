@@ -5,4 +5,5 @@
     <dimen name="margin_8">8dp</dimen>
     <dimen name="text_17">17sp</dimen>
     <dimen name="padding_extra">88dp</dimen>
+    <dimen name="dividerHeight">0.4dp</dimen>
 </resources>
