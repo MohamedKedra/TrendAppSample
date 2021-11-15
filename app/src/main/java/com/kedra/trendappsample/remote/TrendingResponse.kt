@@ -3,10 +3,7 @@ package com.kedra.trendappsample.remote
 import androidx.annotation.Keep
 
 @Keep
-class TrendingResponse : ArrayList<Trending>()
-
-@Keep
-data class Trending(
+data class TrendingResponse(
     val author: String,
     val avatar: String,
     val builtBy: List<BuiltBy>,
@@ -17,7 +14,8 @@ data class Trending(
     val languageColor: String,
     val name: String,
     val stars: Int,
-    val url: String
+    val url: String,
+    var isOpened: Boolean = false
 )
 
 @Keep

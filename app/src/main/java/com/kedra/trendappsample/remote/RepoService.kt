@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface RepoService {
 
-    @GET("")
-    fun getTrendingRepos() : Single<TrendingResponse>
+    @GET("repositories")
+    fun getTrendingRepos(): Single<List<TrendingResponse>>
 }

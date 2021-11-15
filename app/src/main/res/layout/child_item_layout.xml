@@ -40,6 +40,7 @@
                 android:contentDescription="@string/app_name"/>
 
             <TextView
+                android:id="@+id/tvLanguage"
                 android:layout_marginHorizontal="@dimen/margin_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,6 +60,7 @@
                 android:contentDescription="@string/app_name"/>
 
             <TextView
+                android:id="@+id/tvStar"
                 android:layout_marginHorizontal="@dimen/margin_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
                 android:contentDescription="@string/app_name"/>
 
             <TextView
+                android:id="@+id/tvFork"
                 android:layout_marginHorizontal="@dimen/margin_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
