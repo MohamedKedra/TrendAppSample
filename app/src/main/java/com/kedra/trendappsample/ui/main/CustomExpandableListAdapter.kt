@@ -1,14 +1,20 @@
 package com.kedra.trendappsample.ui.main
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.kedra.trendappsample.R
 import com.kedra.trendappsample.remote.TrendingResponse
+import java.io.InputStream
+import java.net.URL
+
 
 class CustomExpandableListAdapter(
     private val context: Context
@@ -17,14 +23,13 @@ class CustomExpandableListAdapter(
 
     private var list: List<TrendingResponse> = ArrayList()
 
-
     fun addList(list: List<TrendingResponse>) {
         this.list = list
     }
 
     override fun getGroupCount() = list.size
 
-    override fun getChildrenCount(groupPosition: Int) = list.size
+    override fun getChildrenCount(groupPosition: Int) = 1
 
     override fun getGroup(groupPosition: Int): Any = list[groupPosition]
 
@@ -58,7 +63,10 @@ class CustomExpandableListAdapter(
         val item = list[groupPosition]
         view?.findViewById<TextView>(R.id.tvName)?.text = item.author
         view?.findViewById<TextView>(R.id.tvTitle)?.text = item.name
-        Glide.with(context).load(item.avatar).into(view?.findViewById(R.id.ivPoster))
+        view?.let {
+            val avatar = it.findViewById<ImageView>(R.id.ivPoster)
+            Glide.with(context).load(item.avatar).into(avatar)
+        }
         return view!!
     }
 
@@ -80,6 +88,8 @@ class CustomExpandableListAdapter(
         view?.findViewById<TextView>(R.id.tvLanguage)?.text = item.language
         view?.findViewById<TextView>(R.id.tvStar)?.text = item.stars.toString()
         view?.findViewById<TextView>(R.id.tvFork)?.text = item.forks.toString()
+        view?.findViewById<ImageView>(R.id.ivLanguage)
+            ?.setBackgroundColor(Color.parseColor(item.languageColor))
         return view!!
     }
 
