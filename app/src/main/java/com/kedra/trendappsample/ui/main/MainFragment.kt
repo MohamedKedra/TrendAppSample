@@ -2,14 +2,13 @@ package com.kedra.trendappsample.ui.main
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import android.widget.ExpandableListView
 import androidx.core.view.isVisible
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.kedra.trendappsample.R
 import com.kedra.trendappsample.app.DataState
 import com.kedra.trendappsample.databinding.MainFragmentBinding
 import com.kedra.trendappsample.remote.TrendingResponse
@@ -125,5 +124,33 @@ class MainFragment : Fragment() {
             }
 
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.trend_menu, menu)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            R.id.sortByName -> {
+             dataList = dataList.sortedBy { it.name }
+            }
+            R.id.sortByStars -> {
+                dataList = dataList.sortedByDescending { it.stars }
+            }
+        }
+
+        adapter.addList(dataList)
+        adapter.notifyDataSetChanged()
+
+        return super.onOptionsItemSelected(item)
     }
 }
