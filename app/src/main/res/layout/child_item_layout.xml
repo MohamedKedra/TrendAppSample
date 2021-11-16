@@ -29,12 +29,12 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:elevation="@dimen/margin_8"
                 android:shape="ring"
                 app:cardCornerRadius="@dimen/margin_16">
@@ -42,7 +42,7 @@
                 <ImageView
                     android:id="@+id/ivLanguage"
                     android:layout_width="match_parent"
-                    android:layout_height="24dp"
+                    android:layout_height="@dimen/icon_size"
                     android:background="@color/cardview_dark_background"
                     android:contentDescription="@string/app_name"/>
 
@@ -64,8 +64,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_star" />
 
@@ -73,7 +73,7 @@
                 android:id="@+id/tvStar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_8"
+                android:layout_marginStart="@dimen/margin_8"
                 android:text="14,236" />
 
         </LinearLayout>
@@ -85,8 +85,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_fork" />
 
@@ -94,7 +94,7 @@
                 android:id="@+id/tvFork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_8"
+                android:layout_marginStart="@dimen/margin_8"
                 android:text="4,372" />
 
         </LinearLayout>

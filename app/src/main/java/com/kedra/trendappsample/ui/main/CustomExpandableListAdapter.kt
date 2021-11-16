@@ -23,7 +23,6 @@ class CustomExpandableListAdapter(
 
     private var list: List<TrendingResponse> = ArrayList()
 
-
     fun addList(list: List<TrendingResponse>) {
         this.list = list
     }
@@ -64,22 +63,11 @@ class CustomExpandableListAdapter(
         val item = list[groupPosition]
         view?.findViewById<TextView>(R.id.tvName)?.text = item.author
         view?.findViewById<TextView>(R.id.tvTitle)?.text = item.name
-//        view?.let {
-//            val avatar = it.findViewById<ImageView>(R.id.ivPoster)
-//            Glide.with(context).load(item.avatar).into(avatar)
-//        }
-        view?.findViewById<ImageView>(R.id.ivPoster)?.setImageDrawable(getDrawable(item.avatar))
-//        Picasso.with(context).load(item.avatar).into(avatar)
-        return view!!
-    }
-
-    private fun getDrawable(url: String?): Drawable? {
-        return try {
-            val input: InputStream = URL(url).content as InputStream
-            Drawable.createFromStream(input, "src name")
-        } catch (e: Exception) {
-            null
+        view?.let {
+            val avatar = it.findViewById<ImageView>(R.id.ivPoster)
+            Glide.with(context).load(item.avatar).into(avatar)
         }
+        return view!!
     }
 
     override fun getChildView(

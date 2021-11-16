@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/refreshItem"
     tools:context=".ui.main.MainFragment">
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
+    <RelativeLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:animationCache="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:animateLayoutChanges="true"
+            android:animationCache="true">
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-        </LinearLayout>
+                <include layout="@layout/shimmer_placeholder_layout" />
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+            </LinearLayout>
 
-    <ExpandableListView
-        android:id="@+id/lvItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/cardview_dark_background"
-        android:dividerHeight="@dimen/dividerHeight"
-        tools:listitem="@layout/group_item_layout" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <include
-        android:visibility="visible"
-        android:id="@+id/error"
-        layout="@layout/error_state_layout" />
+        <ExpandableListView
+            android:id="@+id/lvItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/cardview_dark_background"
+            android:dividerHeight="@dimen/dividerHeight"
+            tools:listitem="@layout/group_item_layout" />
 
-</RelativeLayout>
+        <include
+            android:visibility="visible"
+            android:id="@+id/error"
+            layout="@layout/error_state_layout" />
+
+    </RelativeLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

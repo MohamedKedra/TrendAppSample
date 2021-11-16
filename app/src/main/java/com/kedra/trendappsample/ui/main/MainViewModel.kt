@@ -23,22 +23,22 @@ class MainViewModel @Inject constructor(private val repository: TrendingReposito
 
         publishLoading(liveDataState)
 
-//        disposable.add(
-//            repository.getList().subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(
-//                    object : DisposableSingleObserver<List<TrendingResponse>>() {
-//                        override fun onSuccess(response: List<TrendingResponse>) {
-//                            publishResult(liveDataState, response)
-//                        }
-//
-//                        override fun onError(error: Throwable) {
-//                            publishError(liveDataState, error)
-//                        }
-//                    }
-//                )
-//        )
+        disposable.add(
+            repository.getList().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(
+                    object : DisposableSingleObserver<List<TrendingResponse>>() {
+                        override fun onSuccess(response: List<TrendingResponse>) {
+                            publishResult(liveDataState, response)
+                        }
 
-        publishResult(liveDataState, mockList)
+                        override fun onError(error: Throwable) {
+                            publishError(liveDataState, error)
+                        }
+                    }
+                )
+        )
+
+//        publishResult(liveDataState, mockList)
         return liveDataState
     }
 

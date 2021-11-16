@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import android.widget.ExpandableListView
 import androidx.core.view.isVisible
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.kedra.trendappsample.app.DataState
 import com.kedra.trendappsample.databinding.MainFragmentBinding
 import com.kedra.trendappsample.remote.TrendingResponse
@@ -41,13 +42,12 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         with(binding) {
-            lvItems.isVisible = false
-            shimmerLayout.startShimmerAnimation()
-            Thread.sleep(5000)
             adapter = CustomExpandableListAdapter(requireContext())
             this.lvItems.setAdapter(adapter)
-            lvItems.isVisible = true
-            shimmerLayout.stopShimmerAnimation()
+            refreshItem.setOnRefreshListener {
+                initObserveData()
+                refreshItem.isRefreshing = false
+            }
         }
     }
 
@@ -103,13 +103,26 @@ class MainFragment : Fragment() {
     }
 
     private fun handleExpandedState(expandableListView: ExpandableListView) {
+
         expandableListView.setOnGroupClickListener { parent, v, groupPosition, id ->
-            for (i in 0..dataList.size){
+
+            for (i in 0..dataList.size) {
                 parent.collapseGroup(i)
+
             }
-            parent.expandGroup(
-                groupPosition
-            )
+            val item = dataList[groupPosition]
+            if (item.isExpanded) {
+                item.isExpanded = false
+                parent.collapseGroup(groupPosition)
+            } else {
+                for (i in 0..dataList.size) {
+                    parent.collapseGroup(i)
+                }
+                item.isExpanded = true
+                parent.expandGroup(
+                    groupPosition
+                )
+            }
 
         }
     }
