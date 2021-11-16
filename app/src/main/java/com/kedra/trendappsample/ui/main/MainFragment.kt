@@ -1,4 +1,4 @@
-              package com.kedra.trendappsample.ui.main
+package com.kedra.trendappsample.ui.main
 
 import android.os.Bundle
 import android.util.Log
@@ -7,10 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import android.widget.ExpandableListAdapter
+import android.widget.ExpandableListView
 import androidx.core.view.isVisible
 import com.kedra.trendappsample.app.DataState
 import com.kedra.trendappsample.databinding.MainFragmentBinding
+import com.kedra.trendappsample.remote.TrendingResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +26,8 @@ class MainFragment : Fragment() {
     private lateinit var adapter: CustomExpandableListAdapter
 
     private val viewModel by viewModels<MainViewModel>()
+
+    private lateinit var dataList: List<TrendingResponse>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,11 +44,7 @@ class MainFragment : Fragment() {
             lvItems.isVisible = false
             shimmerLayout.startShimmerAnimation()
             Thread.sleep(5000)
-            adapter = CustomExpandableListAdapter(
-
-                requireContext(),
-
-                )
+            adapter = CustomExpandableListAdapter(requireContext())
             this.lvItems.setAdapter(adapter)
             lvItems.isVisible = true
             shimmerLayout.stopShimmerAnimation()
@@ -62,25 +61,56 @@ class MainFragment : Fragment() {
             when (it.getStatus()) {
 
                 DataState.DataStatus.LOADING -> {
+                    handleState(isLoading = true)
                 }
 
                 DataState.DataStatus.SUCCESS -> {
-                    Log.d("res",it.getData().toString())
+                    handleState(isLoading = false)
+                    Log.d("res", it.getData().toString())
                     it.getData()?.let { list ->
+                        dataList = list
                         adapter.addList(list)
                     }
 
                 }
 
                 DataState.DataStatus.ERROR -> {
-                    Log.d("res",it.getError().toString())
+                    handleState(isLoading = false, hasError = true)
+                    Log.d("res", it.getError().toString())
                 }
 
                 DataState.DataStatus.NO_INTERNET -> {
-
+                    handleState(isLoading = false, hasError = true)
                 }
 
             }
         })
+    }
+
+
+    private fun handleState(isLoading: Boolean, hasError: Boolean = false) {
+        with(binding) {
+            error.progress.isVisible = isLoading && !hasError
+            error.errorContainer.isVisible = hasError && !isLoading
+            lvItems.isVisible = !(isLoading || hasError)
+
+            error.btnRetry.setOnClickListener {
+                initObserveData()
+            }
+
+            handleExpandedState(this.lvItems)
+        }
+    }
+
+    private fun handleExpandedState(expandableListView: ExpandableListView) {
+        expandableListView.setOnGroupClickListener { parent, v, groupPosition, id ->
+            for (i in 0..dataList.size){
+                parent.collapseGroup(i)
+            }
+            parent.expandGroup(
+                groupPosition
+            )
+
+        }
     }
 }

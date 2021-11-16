@@ -14,8 +14,7 @@ data class TrendingResponse(
     val languageColor: String,
     val name: String,
     val stars: Int,
-    val url: String,
-    var isOpened: Boolean = false
+    val url: String
 )
 
 @Keep

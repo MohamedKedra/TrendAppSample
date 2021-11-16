@@ -15,10 +15,10 @@
         android:animationCache="true">
 
         <LinearLayout
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <include layout="@layout/shimmer_placeholder_layout" />
 
@@ -36,16 +36,17 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-
     <ExpandableListView
         android:id="@+id/lvItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/cardview_dark_background"
         android:dividerHeight="@dimen/dividerHeight"
-        android:visibility="gone"
         tools:listitem="@layout/group_item_layout" />
 
-
+    <include
+        android:visibility="visible"
+        android:id="@+id/error"
+        layout="@layout/error_state_layout" />
 
 </RelativeLayout>

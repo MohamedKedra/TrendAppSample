@@ -23,22 +23,22 @@ class MainViewModel @Inject constructor(private val repository: TrendingReposito
 
         publishLoading(liveDataState)
 
-        disposable.add(
-            repository.getList().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(
-                    object : DisposableSingleObserver<List<TrendingResponse>>() {
-                        override fun onSuccess(response: List<TrendingResponse>) {
-                            publishResult(liveDataState, response)
-                        }
+//        disposable.add(
+//            repository.getList().subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(
+//                    object : DisposableSingleObserver<List<TrendingResponse>>() {
+//                        override fun onSuccess(response: List<TrendingResponse>) {
+//                            publishResult(liveDataState, response)
+//                        }
+//
+//                        override fun onError(error: Throwable) {
+//                            publishError(liveDataState, error)
+//                        }
+//                    }
+//                )
+//        )
 
-                        override fun onError(error: Throwable) {
-                            publishError(liveDataState, error)
-                        }
-                    }
-                )
-        )
-
-//        publishResult(liveDataState, mockList)
+        publishResult(liveDataState, mockList)
         return liveDataState
     }
 
@@ -50,46 +50,46 @@ class MainViewModel @Inject constructor(private val repository: TrendingReposito
             url = "https://github.com/xingshaocheng/architect-awesome",
             description = "后端架构师技术图谱",
             language = "Go",
-            languageColor = "#3572A5",
+            languageColor = "#2f12e6",
             stars = 7333,
             forks = 1546,
             currentPeriodStars = 1528,
             builtBy = emptyList()
         ),
         TrendingResponse(
-            author = "xingshaocheng",
-            name = "architect-awesome",
-            avatar = "https://github.com/xingshaocheng.png",
+            author = "Mohamed",
+            name = "flutter-awesome",
+            avatar = "https://github.com/davideuler.png",
             url = "https://github.com/xingshaocheng/architect-awesome",
-            description = "后端架构师技术图谱",
-            language = "Go",
-            languageColor = "#3572A5",
+            description = "Container Runtime Sandbox",
+            language = "Java",
+            languageColor = "#05450c",
+            stars = 1200,
+            forks = 300,
+            currentPeriodStars = 1528,
+            builtBy = emptyList()
+        ),
+        TrendingResponse(
+            author = "Ryad",
+            name = "vbgfr-awesome",
+            avatar = "https://github.com/google.png",
+            url = "https://github.com/xingshaocheng/architect-awesome",
+            description = "A React environment for cross platform native desktop apps",
+            language = "C++",
+            languageColor = "#b04c1e",
             stars = 7333,
             forks = 1546,
             currentPeriodStars = 1528,
             builtBy = emptyList()
         ),
         TrendingResponse(
-            author = "xingshaocheng",
-            name = "architect-awesome",
-            avatar = "https://github.com/xingshaocheng.png",
+            author = "Ramy",
+            name = "MVVM",
+            avatar = "https://github.com/kusti8.png",
             url = "https://github.com/xingshaocheng/architect-awesome",
             description = "后端架构师技术图谱",
-            language = "Go",
-            languageColor = "#3572A5",
-            stars = 7333,
-            forks = 1546,
-            currentPeriodStars = 1528,
-            builtBy = emptyList()
-        ),
-        TrendingResponse(
-            author = "xingshaocheng",
-            name = "architect-awesome",
-            avatar = "https://github.com/xingshaocheng.png",
-            url = "https://github.com/xingshaocheng/architect-awesome",
-            description = "后端架构师技术图谱",
-            language = "Go",
-            languageColor = "#3572A5",
+            language = "Ruby",
+            languageColor = "#1172A5",
             stars = 7333,
             forks = 1546,
             currentPeriodStars = 1528,

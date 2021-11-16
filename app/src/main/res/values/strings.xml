@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TrendAppSample</string>
+    <string name="error">something went wrong</string>
+    <string name="error_description">an alien is probably blocking your signal</string>
+    <string name="retry">Retry</string>
+    <string name="empty_list">empty List</string>
 </resources>
