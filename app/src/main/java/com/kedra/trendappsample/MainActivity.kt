@@ -3,7 +3,9 @@ package com.kedra.trendappsample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kedra.trendappsample.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
