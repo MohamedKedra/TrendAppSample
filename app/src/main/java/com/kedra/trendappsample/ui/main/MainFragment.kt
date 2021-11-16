@@ -1,6 +1,7 @@
-package com.kedra.trendappsample.ui.main
+              package com.kedra.trendappsample.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: MainFragmentBinding
 
-    private lateinit var adapter: ExpandableListAdapter
+    private lateinit var adapter: CustomExpandableListAdapter
 
     private val viewModel by viewModels<MainViewModel>()
 
@@ -64,10 +65,15 @@ class MainFragment : Fragment() {
                 }
 
                 DataState.DataStatus.SUCCESS -> {
+                    Log.d("res",it.getData().toString())
+                    it.getData()?.let { list ->
+                        adapter.addList(list)
+                    }
 
                 }
 
                 DataState.DataStatus.ERROR -> {
+                    Log.d("res",it.getError().toString())
                 }
 
                 DataState.DataStatus.NO_INTERNET -> {

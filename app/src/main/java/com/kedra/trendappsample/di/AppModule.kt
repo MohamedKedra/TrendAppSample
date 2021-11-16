@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    private const val baseURL = "https://private-anon-e9514c3a54-githubtrendingapi.apiary-mock.com/"
+    private const val baseURL = "https://private-anon-ff5114eef6-githubtrendingapi.apiary-mock.com/"
 
     @Singleton
     @Provides

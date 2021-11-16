@@ -55,10 +55,10 @@ class CustomExpandableListAdapter(
 
             view = inflater.inflate(R.layout.group_item_layout, null)
         }
-//        val item = list[groupPosition]
-//        view?.findViewById<TextView>(R.id.tvName)?.text = item.author
-//        view?.findViewById<TextView>(R.id.tvTitle)?.text = item.name
-//        Glide.with(context).load(item.avatar).into(view?.findViewById(R.id.ivPoster))
+        val item = list[groupPosition]
+        view?.findViewById<TextView>(R.id.tvName)?.text = item.author
+        view?.findViewById<TextView>(R.id.tvTitle)?.text = item.name
+        Glide.with(context).load(item.avatar).into(view?.findViewById(R.id.ivPoster))
         return view!!
     }
 
@@ -75,11 +75,11 @@ class CustomExpandableListAdapter(
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(R.layout.child_item_layout, null)
         }
-//        val item = list[groupPosition]
-//        view?.findViewById<TextView>(R.id.tvDescription)?.text = item.description
-//        view?.findViewById<TextView>(R.id.tvLanguage)?.text = item.language
-//        view?.findViewById<TextView>(R.id.tvStar)?.text = item.stars.toString()
-//        view?.findViewById<TextView>(R.id.tvFork)?.text = item.forks.toString()
+        val item = list[groupPosition]
+        view?.findViewById<TextView>(R.id.tvDescription)?.text = item.description
+        view?.findViewById<TextView>(R.id.tvLanguage)?.text = item.language
+        view?.findViewById<TextView>(R.id.tvStar)?.text = item.stars.toString()
+        view?.findViewById<TextView>(R.id.tvFork)?.text = item.forks.toString()
         return view!!
     }
 
